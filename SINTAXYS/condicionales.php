@@ -45,9 +45,7 @@ echo rangoSalarios(470);
 echo "<br>";
 echo rangoSalarios(100);
 
-
 #switch
-
 //estaciones del año
 
 
