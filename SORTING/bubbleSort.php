@@ -9,6 +9,7 @@ function bubbleSort($array){
     //[5,7,1,3,8]
     //[1,5,7,3,8]
     //[1,5,3,7,8]
+    $comparaciones = 0;
     for($i = 0; $i < count($array); $i++){
         for($j = 0; $j < count($array) - 1; $j++){
             //[0] > [1]
@@ -26,14 +27,18 @@ function bubbleSort($array){
                  * array[3] = 7
                  * array[2] = 3
                  */
+                
                 $temporal = $array[$j + 1];
                 $array[$j + 1] = $array[$j];
                 $array[$j] = $temporal;
             }
+            $comparaciones++;
         }
     }
+    echo "Comparaciones: " . $comparaciones . "<br>";
     print_r($array);
 }
 
+bubbleSort([100,789,1105,23,67,876]);
 
 ?>
