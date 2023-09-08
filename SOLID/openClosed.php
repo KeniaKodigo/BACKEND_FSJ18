@@ -24,6 +24,7 @@ class Notificador{
 
 #aplicando el principio /clase abstracta / interface
 
+#aplicando con interfaz
 interface TipoNot{
     public function envio($msj, $destino);
 }
@@ -35,7 +36,7 @@ class CorreoElectronico implements TipoNot{
 }
 
 
-
+#aplicando con clase abstracta
 abstract class TipoNotificador{
     abstract function envio($mensaje, $destinatario);
 }
