@@ -1,0 +1,21 @@
+Ejercicio:
+
+Supongamos que tienes que desarrollar un sistema para gestionar los empleados de una empresa. Cada empleado puede ser de dos tipos: 
+"Empleado de Tiempo Completo" y "Empleado de Medio Tiempo". Ambos tipos de empleados tienen un nombre y un salario.
+
+1. Define una jerarquía de clases que represente a los empleados de tiempo completo y de medio tiempo, asegurándote de aplicar el principio de Liskov.
+
+2. Cada tipo de empleado debe tener un método para calcular su salario, que podría variar según su tipo. Los empleados de tiempo completo pueden tener bonos, 
+mientras que los de medio tiempo pueden tener horas extra.
+
+3. Implementa un método para imprimir los detalles de un empleado (nombre y salario) en cada clase de empleado.
+
+4. Crea una interfaz que defina un método para calcular el salario, y asegúrate de que ambas clases de empleados la implementen.
+
+5. Implementa una clase Empresa que pueda gestionar una lista de empleados. La empresa debe poder agregar, eliminar y mostrar la información de sus empleados.
+
+6. Aplica el principio de responsabilidad única asegurándote de que cada clase tenga una única responsabilidad relacionada con la gestión de empleados.
+
+7. Asegúrate de que el software esté abierto para la extensión (OCP) para que puedas agregar nuevos tipos de empleados en el futuro sin modificar las clases existentes.
+
+8. Implementa la inversión de dependencia (DIP) haciendo que la clase Empresa dependa de la abstracción (interfaz) en lugar de clases concretas.
