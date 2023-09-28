@@ -48,7 +48,10 @@
                             <td><?php echo $item["carnet"]; ?></td>
                             <td><?php echo $item["bootcamp"]; ?></td>
                             <td>
-                                <button class="btn btn-warning">Editar</button>
+                                <form action="./actualizar_estudiante.php" method="POST">
+                                    <input type="hidden" name="id_estudiante" value="<?php echo $item["id"]; ?>">
+                                    <input type="submit" class="btn btn-warning" value="Editar">
+                                </form>
                             </td>
                             <td>
                                 <button class="btn btn-danger">Cambiar Estado</button>

@@ -41,7 +41,7 @@
                 <input type="text" class="form-control" name="carnet">
 
                 <label for="">Seleccione Bootcamp</label>
-                <select name="" class="form-control">
+                <select name="bootcamp" class="form-control">
                     <!-- base de datos -->
                     <?php foreach($arreglo_bootcamps as $bootcamp){ ?>
                         <option value="<?php echo $bootcamp['id']; ?>"><?php echo $bootcamp['bootcamp']; ?></option>
@@ -56,6 +56,8 @@
                 <br>
                 <input type="submit" class="btn btn-primary my-4" value="Registrar">
             </form>
+
+            <?php $estudiante->save(); ?>
         </section>
     </main>
 </body>
