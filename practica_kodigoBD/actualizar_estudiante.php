@@ -32,6 +32,8 @@
 
             <form action="" method="POST">
                 <?php foreach($datos as $objeto) { ?>
+                    <input type="hidden" name="id_estudiante" value="<?php echo $objeto["id"]; ?>">
+
                     <label for="">Nombre Completo</label>
                     <input type="text" class="form-control" name="nombre" value="<?php echo $objeto['nombre']; ?>">
 
@@ -44,6 +46,8 @@
                     <input type="submit" class="btn btn-dark my-4" value="Actualizar">
                 <?php } ?>
             </form>
+
+            <?php $estudiante->update(); ?>
         </section>
     </main>
 </body>

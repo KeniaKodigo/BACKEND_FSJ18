@@ -103,6 +103,30 @@ class Estudiante extends Conexion{
         }   
         
     }
+
+    #actualizar estudiante
+    public function update(){
+        if(isset($_POST['nombre'],$_POST['direccion'], $_POST['carnet'], $_POST['id_estudiante'])){
+
+            $this->nombre = $_POST['nombre']; //karla
+            $this->direccion = $_POST['direccion'];
+            $this->carnet = $_POST['carnet'];
+            $this->id = $_POST['id_estudiante'];
+
+            $pdo = $this->conectar(); //PDO
+            $query = $pdo->prepare("UPDATE estudiantes SET nombre = ?, direccion = ?, carnet = ? WHERE id = ?");
+            //bindparams(:name => $this->nombre, :address => $this->direccion)
+            $resultado = $query->execute(["$this->nombre","$this->direccion","$this->carnet", $this->id]);
+
+            if($resultado){
+                echo "<script>
+                    window.location = 'estudiantes_activos.php'
+                </script>";
+            }else{
+                echo "Error, al actualizar el estudiante";
+            }
+        }
+    }
 }
 
 ?>
