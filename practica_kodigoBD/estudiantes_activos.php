@@ -24,6 +24,7 @@
 
         $estudiante = new Estudiante();
         $arreglo_datos = $estudiante->getAll();
+        $arreglo_estado = $estudiante->estadoByEgresadoDesercion();
         //print_r($arreglo_datos);
     ?>
 
@@ -54,13 +55,45 @@
                                 </form>
                             </td>
                             <td>
-                                <button class="btn btn-danger">Cambiar Estado</button>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEstado<?php echo $item["id"]; ?>">Cambiar Estado</button>
                             </td>
                         </tr>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalEstado<?php echo $item["id"]; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Cambio de Estado</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="" method="POST">
+                                <div class="modal-body">
+                                    <h5><?php echo $item["nombre"]; ?></h5>
+                                    <input type="hidden" name="id_estudiante" value="<?php echo $item["id"]; ?>">
+                                    <p><strong>Estado: </strong>Activo</p>
+                                        <label for="" class="form-label">Cambio de Estado</label>
+                                        <select name="estado" id="" class="form-control">
+                                            <?php foreach($arreglo_estado as $estado){ ?>
+                                                <option value="<?php echo $estado['id']; ?>"><?php echo $estado['estado']; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <input type="submit" class="btn btn-danger" value="Cambiar Estado">
+                                </div>
+                            </form>
+
+                            <?php $estudiante->actualizarEstadoDesercionEgresado(); ?>
+                            </div>
+                        </div>
+                        </div>
                     <?php } ?>
                 </tbody>
             </table>
         </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

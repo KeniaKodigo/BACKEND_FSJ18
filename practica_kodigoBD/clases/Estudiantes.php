@@ -127,6 +127,48 @@ class Estudiante extends Conexion{
             }
         }
     }
+
+    #metodo para obtener el estado desercion y egresado
+    public function estadoByEgresadoDesercion(){
+        $pdo = $this->conectar();
+        $query = $pdo->query("SELECT * FROM estado WHERE id = 3 OR id = 5");
+        $query->execute();
+        $resultado = $query->fetchAll(PDO::FETCH_ASSOC); //[]
+        return $resultado;
+    }
+
+    #metodo para actualizar el estado del estudiante (desercion o egresado)
+    public function actualizarEstadoDesercionEgresado(){
+        if(isset($_POST['id_estudiante'], $_POST['estado'])){
+            $this->id = $_POST['id_estudiante']; //2
+            $this->estado = $_POST['estado'];
+
+            $pdo = $this->conectar();
+            $query = $pdo->prepare("UPDATE estudiantes SET id_estado = ? WHERE id = ?");
+
+            $resultado = $query->execute([$this->estado, $this->id]);
+            if($resultado){
+                echo "<script>
+                    window.location = 'estudiantes_activos.php'
+                </script>";
+            }else{
+                echo "Error, al cambiar el estado del estudiante";
+            }
+        }
+    }
+
+
+    #metodo que obtiene los estudiantes desertados
+    public function getDesertados(){
+        //llamamos al metodo conectar de la clase conexion
+        $pdo = $this->conectar(); //PDO
+        //generamos la consulta
+        $query = $pdo->query("SELECT estudiantes.*, bootcamp.bootcamp, estado.estado FROM estudiantes INNER JOIN bootcamp ON estudiantes.id_bootcamp = bootcamp.id INNER JOIN estado ON estudiantes.id_estado = estado.id WHERE estudiantes.id_estado = 3");
+        //ejecutemos la consulta
+        $query->execute(); //[]
+        $resultado = $query->fetchAll(PDO::FETCH_ASSOC);//arreglo de objetos
+        return $resultado;
+    }
 }
 
 ?>

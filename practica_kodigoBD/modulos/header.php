@@ -17,7 +17,7 @@
                 <a href="./estudiantes_activos.php" class="nav-link scrollto"><i class="bx bxs-user-detail"></i> <span>Gestion Estudiantes</span></a>
             </li>
             <li>
-                <a href="#" class="nav-link scrollto"><i class="bx bx-user-x"></i> <span>Estudiantes Inactivos</span></a>
+                <a href="./estudiantes_desertados.php" class="nav-link scrollto"><i class="bx bx-user-x"></i> <span>Estudiantes Desertados</span></a>
             </li>
             <li>
                 <a href="#" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Gestion Profesores</span></a>
