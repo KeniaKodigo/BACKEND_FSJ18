@@ -1,11 +1,16 @@
 <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
 <header id="header">
+    <?php 
+        require "./clases/Autenticacion.php";
+        $autenticar = new Autenticacion();
+    ?>
     <div class="d-flex flex-column">
 
         <div class="profile">
         <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="#">Usuario</a></h1>
+        <!-- hacemos el llamado de la sesion -->
+        <h1 class="text-light"><a href="#"><?php echo $_SESSION['nombre_usuario']; ?></a></h1>
         </div>
 
         <nav id="navbar" class="nav-menu navbar">
@@ -21,6 +26,13 @@
             </li>
             <li>
                 <a href="#" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Gestion Profesores</span></a>
+            </li>
+            <li>
+                <form action="" method="post">
+                    <input type="submit" class="btn btn-danger px-2" name="cerrar_sesion" value="Cerrar Sesion">
+                </form>
+
+                <?php $autenticar->cerrarSesion(); ?>
             </li>
         </ul>
         </nav>

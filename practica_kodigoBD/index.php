@@ -1,3 +1,7 @@
+<?php
+    //iniciando la sesion
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +25,12 @@
 
 <body>
     <main>
+        <?php 
+            require "./clases/Autenticacion.php";
+            $autenticar = new Autenticacion();
+        ?>
         <section class="container">
-        <form>
+        <form method="POST">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
@@ -34,6 +42,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
         </form>
+        <?php $autenticar->autenticarUsuario(); ?>
         </section>
     </main>
 
@@ -41,4 +50,5 @@
 <script src="assets/vendor/typed.js/typed.umd.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
+
 </html>
